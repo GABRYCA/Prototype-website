@@ -117,6 +117,9 @@ a:hover{text-decoration: none; cursor:pointer;}
 	padding-left:inherit;
 	padding-right:inherit;
 }
+.navbar-dark .nav .dropdown-menu .nav-link{
+	color: rgb(64, 64, 64);
+}
 /* Handle Multi Level Navigation */.navbar-light .navbar-nav .nav-link {
 	color: rgb(64, 64, 64);
 }
