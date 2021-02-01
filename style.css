@@ -1,7 +1,3 @@
-/*-----------------------------------------------------------------------------------
-	    Prison
------------------------------------------------------------------------------------*/
- 
 body{
 	margin:0;
 	padding:0;
@@ -10,23 +6,22 @@ body{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.page-container{overflow-x:hidden;} /* Prevents unwanted scroll space when scroll FX used. */
+.page-container{overflow: hidden;} /* Prevents unwanted scroll space when scroll FX used. */
 a,button{transition: background .3s ease-in-out;outline: none!important;} /* Prevent ugly blue glow on chrome and safari */
 a:hover{text-decoration: none; cursor:pointer;}
 
 
 /* Preloader */
 
-.page-preloader{position: fixed;top: 0;bottom: 0;width: 100%;z-index:100000;background:#FFFFFF url("img/pageload-spinner.gif") no-repeat center center;}
-
-/* = Blocs
--------------------------------------------------------------- */
+.page-preloader{position: fixed;top: 0;bottom: 0;width: 100%;z-index:100000;background:#FFFFFF url("img/pageload-spinner.gif") no-repeat center center;animation-name: preloader-fade;animation-delay: 2s;animation-duration: 0.5s;animation-fill-mode: both;}
+.preloader-complete{animation-delay:0.1s;}
+@keyframes preloader-fade {0% {opacity: 1;visibility: visible;}100% {opacity: 0;visibility: hidden;}}
 
 .bloc{
 	width:100%;
 	clear:both;
 	background: 50% 50% no-repeat;
-	padding:0 50px;
+	padding:0 20px;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -43,10 +38,10 @@ a:hover{text-decoration: none; cursor:pointer;}
 /* Sizes */
 
 .bloc-lg{
-	padding:100px 50px;
+	padding:100px 20px;
 }
 .bloc-sm{
-	padding:20px 50px;
+	padding:20px;
 }
 
 
@@ -192,13 +187,6 @@ button{
 	font-size:100px!important;
 }
 
-/*  Rounded Image */
-.img-rd-md{
-	border-radius:20px;
-}
-.img-rd-lg{
-	border-radius:34px;
-}
 
 
 
@@ -222,21 +210,27 @@ button{
 /* ScrollToTop button */
 
 .scrollToTop{
-	width:40px;
-	height:40px;
+	width:36px;
+	height:36px;
+	padding:5px;
 	position:fixed;
 	bottom:20px;
 	right:20px;
-	opacity: 0;
-	z-index: 500;
+	opacity:0;
+	z-index:999;
 	transition: all .3s ease-in-out;
-}
-.scrollToTop span{
-	margin-top: 6px;
+	pointer-events:none;
 }
 .showScrollTop{
-	font-size: 14px;
 	opacity: 1;
+	pointer-events:all;
+}
+.scroll-to-top-btn-icon{
+	fill: none;
+	stroke: #fff;
+	stroke-width: 2px;
+	fill-rule: evenodd;
+	stroke-linecap:round;
 }
 
 /* = Custom Styling
@@ -304,14 +298,39 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 
 
 
+/* = Bloc Padding Multi Breakpoint
+-------------------------------------------------------------- */
+
+@media (min-width: 576px) {
+    .bloc-xxl-sm{padding:200px 20px;}
+    .bloc-xl-sm{padding:150px 20px;}
+    .bloc-lg-sm{padding:100px 20px;}
+    .bloc-md-sm{padding:50px 20px;}
+    .bloc-sm-sm{padding:20px;}
+    .bloc-no-padding-sm{padding:0 20px;}
+}
+@media (min-width: 768px) {
+    .bloc-xxl-md{padding:200px 20px;}
+    .bloc-xl-md{padding:150px 20px;}
+    .bloc-lg-md{padding:100px 20px;}
+    .bloc-md-md{padding:50px 20px;}
+    .bloc-sm-md{padding:20px 20px;}
+    .bloc-no-padding-md{padding:0 20px;}
+}
+@media (min-width: 992px) {
+    .bloc-xxl-lg{padding:200px 20px;}
+    .bloc-xl-lg{padding:150px 20px;}
+    .bloc-lg-lg{padding:100px 20px;}
+    .bloc-md-lg{padding:50px 20px;}
+    .bloc-sm-lg{padding:20px;}
+    .bloc-no-padding-lg{padding:0 20px;}
+}
+
+
 /* = Mobile adjustments 
 -------------------------------------------------------------- */
 @media (max-width: 1024px)
 {
-    .bloc{
-        padding-left: 20px; 
-        padding-right: 20px;  
-    }
     .bloc.full-width-bloc, .bloc-tile-2.full-width-bloc .container, .bloc-tile-3.full-width-bloc .container, .bloc-tile-4.full-width-bloc .container{
         padding-left: 0; 
         padding-right: 0;  
@@ -320,21 +339,13 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 @media (max-width: 991px)
 {
     .container{width:100%;}
-    .page-container, #hero-bloc{overflow-x: hidden;position: relative;} /* Prevent unwanted side scroll on mobile */
     .bloc{padding-left: constant(safe-area-inset-left);padding-right: constant(safe-area-inset-right);} /* iPhone X Notch Support*/
     .bloc-group, .bloc-group .bloc{display:block;width:100%;}
 }
 @media (max-width: 767px)
 {
-    .page-container{
-        overflow-x: hidden;
-        position:relative;
-    }
     .bloc-tile-2 .container, .bloc-tile-3 .container, .bloc-tile-4 .container{
         padding-left:0;padding-right:0;
-    }
-    .a-block{
-        padding:0 10px;
     }
     .btn-dwn{
        display:none; 
